@@ -1,4 +1,14 @@
-	game.StarterGui:SetCore("SendNotification", {
+local OldNameCall 
+OldNameCall = hookmetamethod(game, "__namecall", function(...) --namecall shit blah blah
+    
+    if getnamecallmethod() == "Kick" then --calling for a kick
+        return--returning the kick nil 
+    end
+
+    return OldNameCall(...)
+end)
+
+game.StarterGui:SetCore("SendNotification", {
 		Title = "BorkWare"; 
 		Text = "Welcome " .. game.Players.LocalPlayer.Name ..  " Thanks For Using BorkWare!";
 		Duration = 5; 
@@ -152,12 +162,6 @@ FOVCircle.Filled = false
 FOVCircle.Transparency = 1
 
    game:GetService("RunService").RenderStepped:Connect(function()
-       if  game:GetService("Players").LocalPlayer.PlayerScripts.LocalMain.Bindables.CharacterAdded:FindFirstChild("AntiExploit") then
-      game:GetService("Players").LocalPlayer.PlayerScripts.LocalMain.Bindables.CharacterAdded.AntiExploit:Destroy()
-  end
-    if  game:GetService("Players").LocalPlayer.PlayerScripts.LocalMain.GeneralFunctions:FindFirstChild("KickPlayer") then
-      game:GetService("Players").LocalPlayer.PlayerScripts.LocalMain.GeneralFunctions.KickPlayer:Destroy()
-    end  
 if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
 game.Players.LocalPlayer.Character.Humanoid.JumpPower = Settings.Toggles.JumpPower
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Settings.Toggles.WalkSpeed
