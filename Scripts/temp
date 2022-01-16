@@ -1,0 +1,16 @@
+for i, v in pairs(Tables) do
+    getgenv()[i] = v
+
+    for o, b in pairs(v) do
+        if not getgenv()[o] and type(b) == "function" then
+            getgenv()[o] = b
+        end
+    end
+end
+
+for i, v in pairs(getgc(false)) do
+    if getinfo(v).name == "loadgun" then
+        getgenv()["loadgun"] = v
+        break
+    end
+end
