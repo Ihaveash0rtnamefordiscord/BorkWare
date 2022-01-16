@@ -1,5 +1,4 @@
 local function A()
-for i, v in pairs(Tables) do
     getgenv()[i] = v
 
     for o, b in pairs(v) do
@@ -9,10 +8,10 @@ for i, v in pairs(Tables) do
     end
 end
 
-for i, v in pairs(getgc(false)) do
-    if getinfo(v).name == "loadgun" then
+local function B()
+if getinfo(v).name == "loadgun" then
         getgenv()["loadgun"] = v
         break
     end
 end
-end
+
