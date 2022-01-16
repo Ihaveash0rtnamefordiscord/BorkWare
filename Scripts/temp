@@ -1,3 +1,4 @@
+local function A()
 for i, v in pairs(Tables) do
     getgenv()[i] = v
 
@@ -13,4 +14,5 @@ for i, v in pairs(getgc(false)) do
         getgenv()["loadgun"] = v
         break
     end
+end
 end
